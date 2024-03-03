@@ -1,0 +1,77 @@
+{% include 'base.html' %}
+{% block content %}
+
+    {% comment %} {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {% endfor %} {% endcomment %}
+
+    {% load widget_tweaks %}
+    <div class="container">
+        <div class="row justify-content">
+            <form method="post" action="{% url 'app:donors' %}">
+                {% csrf_token %}
+                <h4 class="card-header text-center">Profile</h4>
+            </br>
+                <table class="verification-table">
+                    {% for field in form %}
+                        {% if not field.label == "Profile there" %}
+                        <tr>
+                            <th>{{ field.label }}</th>
+                            <td>
+                                {% render_field field class="form-control" id="custom-{{ field.id_for_label }}" %}
+                            </td>
+                        </tr>
+                            {% endif %}
+                    {% endfor %}
+                </table>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <a href="{% url 'app:edit_profile' pk=request.user.id %}" class="btn btn-primary"> Edit Profile </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <a href="{% url 'app:verification' %}" class="btn btn-primary"> Verify with mobile number </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+        .btn btn-primary {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .text-center {
+            margin-top:1rem;
+        }
+        .verification-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        .verification-table th,
+        .verification-table td {
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .verification-table th {
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
