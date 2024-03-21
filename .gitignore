@@ -1,0 +1,36 @@
+*.pyc
+__pycache__/
+
+# SQLite database
+db.sqlite3
+data_postgres.json
+
+# Database migration scripts
+migrations/
+
+# Environment variables
+.env
+
+# Virtual environment
+.venv/
+
+# JetBrains IDE settings
+.idea/
+
+# Log files
+*.log
+
+# Translation files
+*.pot
+
+# Coverage reports
+htmlcov/
+
+# Build artifacts
+build/
+
+# Distribution packages
+dist/
+
+#aadhaar file
+aadhaar_verification.py

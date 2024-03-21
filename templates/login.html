@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Close the alert when the button is clicked
+            document.getElementByClass("close").addEventListener("click", function () {
+                document.getElementById("myAlert").style.display = "none";
+            });
+        });
+    </script>
+    {% endfor %}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-3">
+                    <h1 class="text-center mb-4">Login</h1>
+                    <form method="post" action="/login">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" id="username" name="username" Required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" id="password" name="password" Required>
+                        </div>
+                        <div class="form-group">
+                            <a href="">Forgot Password</a>
+                            <a href="{% url 'app:register' %}" class="float-right">Register</a>
+                        </div>
+                    </p>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder">Login</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</body>
+{% endblock content%}

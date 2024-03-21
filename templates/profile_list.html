@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <style>
+    .search:focus {
+      background-color: #E8E8E8;
+    }
+  </style>
+  <div class="w-100 text-center">
+    {% csrf_token %}
+    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'app:donors' %}" style="padding-left:12rem">
+      <input class="form-control mr-sm-3" type="search" name="search" placeholder="Search for location, name, age, status" aria-label="Search" style="width: 50%">
+      <select class="form-control mr-sm-3" name="blood_group">
+        <option value="">Select Blood Group</option>
+        <option value="O +ve">O+</option>
+        <option value="O -ve">O-</option>
+        <option value="A +ve">A+</option>
+        <option value="A -ve">A-</option>
+        <option value="B +ve">B+</option>
+        <option value="B -ve">B-</option>
+        <option value="AB +ve">AB+</option>
+        <option value="AB -ve">AB-</option>
+      </select>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="width:10%">Search</button>
+    </form>
+    <br>
+    <h2> Donors </h2>
+    </br>
+    {% if donor_profiles %}
+        
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-borderless table-hover">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Age</th>
+                      <th>Blood Group</th>
+                      <th>Location</th>
+                      <th>Phone</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for donor in donor_profiles %}
+                    <tr>
+                      <td>{{donor.name}}</td>
+                      <td>{{donor.age}}</td>
+                      <td>{{donor.blood_group}}</td>
+                      <td>{{donor.city}}</td>
+                      <td>{{donor.ph_num}}</td>
+                      <td>{{donor.active_status}}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                
+              </div>
+            </div>
+          </div>
+        
+        <style>
+          .table-borderless {
+            border: none;
+          }
+          
+          .table-hover {
+            transition: background-color 0.3s ease;
+          }
+          
+          .table-hover:hover {
+            background-color: #f5f5f5;
+          }
+          
+          .table th,
+          .table td {
+            padding: 1rem;
+            border-top: none;
+            border-bottom: 1px solid #ddd;
+          }
+          
+          .table th {
+            font-weight: 500;
+            color: #333;
+          }
+          
+          .table td {
+            color: #666;
+          }
+          
+          @media (max-width: 767.98px) {
+            .table th,
+            .table td {
+              padding: 0.5rem;
+            }
+          }
+        </style>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-3">
+            <h3> Aadhaar Verification </h3>
+        </br>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Aadhaar Number</label>
+                    <input type="text" class="form-control" id="aadhaar" placeholder="Enter your aadhaar number">
+                </div>
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input type="text" class="form-control" id="number" placeholder="Enter your mobile number">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-outline-dark btn-lg fs-6 fw-bolder">Send OTP</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
