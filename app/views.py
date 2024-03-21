@@ -201,6 +201,7 @@ def aadhaar_verification(request):
             return render(request, 'verification.html', {'error': 'Request failed'})
     else:
         return render(request, 'verification.html')
+<<<<<<< HEAD
 
 def send_otp(request):
     form = VerifyForm()
@@ -221,3 +222,5 @@ def verify_otp(request):
 
 def verified(request):
     return render(request, 'verified.html')
+=======
+>>>>>>> origin/main

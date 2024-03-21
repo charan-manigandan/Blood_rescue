@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
@@ -20,3 +21,23 @@
     </div>
 </div>
 {% endblock content %}
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify OTP</title>
+</head>
+<body>
+    <h1>Enter OTP:</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Verify OTP</button>
+    </form>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>
+>>>>>>> origin/main
