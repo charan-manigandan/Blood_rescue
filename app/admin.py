@@ -15,3 +15,4 @@ class UserAdmin(admin.ModelAdmin):
 
 admin.site.register(Donors)
 admin.site.register(Verification)
+admin.site.register(Report)

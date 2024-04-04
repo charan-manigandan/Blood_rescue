@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
@@ -25,20 +24,3 @@
     </div>
 </div>
 {% endblock content %}
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Send OTP</title>
-</head>
-<body>
-    <h1>Enter your phone number to receive OTP:</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Send OTP</button>
-    </form>
-</body>
-</html>
->>>>>>> origin/main
