@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from datetime import datetime
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
-from .forms import Edit_profile, Create_Profile, VerifyForm
+from .forms import Edit_profile, Create_Profile, VerifyForm, ReportForm
 from django.views import View
 from .serializers import *
 from django.urls import reverse_lazy, reverse
@@ -19,6 +19,8 @@ import hashlib
 import pyotp
 from .verify import send_otp
 from datetime import datetime
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 
 
@@ -201,7 +203,6 @@ def aadhaar_verification(request):
             return render(request, 'verification.html', {'error': 'Request failed'})
     else:
         return render(request, 'verification.html')
-<<<<<<< HEAD
 
 def send_otp(request):
     form = VerifyForm()
@@ -222,5 +223,20 @@ def verify_otp(request):
 
 def verified(request):
     return render(request, 'verified.html')
-=======
->>>>>>> origin/main
+
+@csrf_exempt
+def report(request):
+    rep_text = request.POST.get('problem')
+    if request.method == 'POST':
+        user = request.user
+        report_text = request.POST.get('problem')
+        print(report_text)
+        if report_text:
+            report_obj = Report.objects.create(user=user,report=report_text)
+            return JsonResponse({'status': 'success', 'report_obj': report_obj.id})
+    elif request.method == 'GET':
+        # Retrieve all reports
+        reports = Report.objects.all()
+        report_data = [{'user': report.user.username, 'report': report.report} for report in reports]
+        return JsonResponse({'status': 'success', 'reports': report_data})
+    return JsonResponse({'status': 'error', 'rep_txt': rep_text})

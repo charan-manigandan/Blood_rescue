@@ -42,3 +42,8 @@ class Donors(models.Model):
 class Verification(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     verified = models.BooleanField(default=False)
+
+class Report(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    report = models.CharField(max_length=500)
+    created_at = models.DateTimeField(auto_now_add=True)
