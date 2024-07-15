@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-18">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <link rel="sytlesheet" href="background_style.css"> -->
+    <title>Blood Rescue</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="new_style.css">
+    <!-- <script src="script.js" defer></script> -->
+
+</head>
+<body>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body{
+            height: 100vh;
+            background: rgb(255,94,98);
+            background: linear-gradient(0deg, rgba(255,94,98,1) 0%, rgba(255,153,102,1) 100%);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .links{
+            list-style: none;
+            color: blue;
+            display: top-left;
+        }
+
+        * {
+            text-decoration: none;
+            justify-content: right;
+            color: white;
+            font-size: 1rem;
+            display: top-left;
+            margin-left: 1rem;
+        }
+
+<!--        a:hover {-->
+<!--            color: orange;-->
+<!--        }-->
+
+        header {
+            position: relative;
+            padding: 0 2rem;
+        }
+
+        .navbar {
+            width: 100%;
+            height: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar .logo a{
+            font-size; 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar .links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar .toggle_btn {
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display:none;
+        }
+
+        .action_btn {
+            background-color: red;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            outline: none;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: scale 0.2 ease;
+        }
+
+        .action_btn:hover {
+            scale: 1.05;
+            color: white;
+        }
+
+        .action_btn:active {
+            scale: 0.95;
+        }
+
+        .Content {
+            padding: 5rem;
+            display: grid;
+            border-style: solid;
+            grid-template-columns: auto auto auto;
+        }
+    </style>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a imgsrc="templates/logo.png">The Donor</a></div>
+                <div class="links">
+                    <li><a href="about">About</a></li>
+                    <li><a href="services">Services</a></li>
+                    <li><a href="Contact">Contact</a></li>
+                </div>
+                <a href="login/" class="action_btn">Login</a>
+                <div class="toggle_btn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+    </header>
+    {% for i in data %}
+    <div class="Content">
+        <p>{{i.name}}</p>
+        <p>{{i.age}}</p>
+        <p>{{i.location}}</p>
+        <p>{{i.verified}}</p>
+        <p>{{i.phone}}</p>
+    </div>
+    {% endfor %}
+
+
+</body>
+</html>
