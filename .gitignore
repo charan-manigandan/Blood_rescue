@@ -9,7 +9,10 @@ data_postgres.json
 migrations/
 
 # Environment variables
-.env
+*.env
+*.env.example
+*.env.local
+*.env.staging
 
 # Virtual environment
 .venv/

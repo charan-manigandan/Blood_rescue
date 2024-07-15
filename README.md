@@ -29,7 +29,7 @@ Contribute by
   ```bash
   cd repository
   ```
-* checkout master
+* create a new branch of your wish and push the code
   ```bash
   git checkout master
   ```
