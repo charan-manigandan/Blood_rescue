@@ -2,8 +2,8 @@
 __pycache__/
 
 # SQLite database
-db.sqlite3
-data_postgres.json
+*.db.sqlite3
+*.data_postgres.json
 
 # Database migration scripts
 migrations/
@@ -15,10 +15,10 @@ migrations/
 *.env.staging
 
 # Virtual environment
-.venv/
+*.venv/
 
 # JetBrains IDE settings
-.idea/
+*.idea/
 
 # Log files
 *.log
@@ -36,4 +36,4 @@ build/
 dist/
 
 #aadhaar file
-aadhaar_verification.py
+*.aadhaar_verification.py
